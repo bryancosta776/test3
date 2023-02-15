@@ -26,8 +26,6 @@ app.get('/server', (req, res) => {
                 
             }
         }
-
-        console.log(end)
         
     }
     do{
