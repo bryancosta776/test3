@@ -8,31 +8,23 @@ app.get('/server', (req, res) => {
     
     let yer = [10, 5, 9, 7, 10, 1, 2, 5, 4]
     
-    function bubbleSort(arr){
-        swapped = false;
-        
-        let end = arr.length - 1
-
+    function selection_Sort(arr){
         let temp;
-    
-        for(i = 0; i < end; i++){
-            for(j = 0; j < arr[i]; j++){
-                if(arr[i] > arr[i + 1]){
-                    swapped = true
-                    temp = arr[i]
-                    arr[i] = arr[i + 1]
-                    arr[i + 1] = temp
-                }
-                
-            }
+        let min_index
+        for(i = 0; i < arr.length; i++){
+            min_index = i
+            for(let j = i + 1; j < arr.length; j++)
+                if(arr[j] < arr[min_index])
+                    min_index = j
+                temp = arr[i];
+                arr[i] = arr[min_index]
+                arr[min_index] = temp   
         }
-        
+        return arr
     }
-    do{
-        bubbleSort(yer)
-    }while(swapped)
-
-    res.json(yer)
+    
+    const result = selection_Sort(yer)
+    res.json(result)
 
 
 })
