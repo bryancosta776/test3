@@ -8,33 +8,26 @@ app.get('/server', (req, res) => {
     
     let yer = [10, 5, 9, 7, 10, 1, 2, 5, 4]
     
-    function bubbleSort(arr){
-        swapped = false;
-        
-        let end = arr.length - 1
-
-        let temp;
-    
-        for(i = 0; i < end; i++){
-            for(j = 0; j < arr[i]; j++){
-                if(arr[i] > arr[i + 1]){
-                    swapped = true
-                    temp = arr[i]
-                    arr[i] = arr[i + 1]
-                    arr[i + 1] = temp
-                }
-                
-            }
-        }
-        
+    function quickSort(arr){
+       if(arr.length === 0) return [];
+       
+       if(arr.length === 1) return arr;
+       
+       let pivot = arr[0]
+      
+       let head = arr.filter(n => n < pivot)
+       
+       let equal = arr.filter(n => n === pivot)
+       
+       let tail = arr.filter(n => n > pivot)
+       
+       
+       return quickSort(head).concat(equal).concat(quickSort(tail))
+       
     }
-    do{
-        bubbleSort(yer)
-    }while(swapped)
 
-    res.json(yer)
-
-
+    let result = quickSort([3,2])
+    res.json(result)
 })
 
 
