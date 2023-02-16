@@ -18,7 +18,7 @@ app.get('/server', (req, res) => {
                     min_index = j
                 temp = arr[i];
                 arr[i] = arr[min_index]
-                arr[min_index] = temp   
+                arr[min_index] = temp  
         }
         return arr
     }
